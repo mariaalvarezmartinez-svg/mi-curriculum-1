@@ -1,0 +1,512 @@
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#B5D1E8">
+  <title>María Álvarez Martínez | Currículum</title>
+  <style>
+    :root {
+      /* Azul cielo para la barra superior y los detalles suaves de la página. */
+      --color-cielo: #B5D1E8;
+      /* Blanco para el texto de portada y los fondos limpios. */
+      --color-blanco: #FFFFFF;
+      /* Carbón para el texto principal y la navegación. */
+      --color-carbon: #181818;
+      /* Azul petróleo para la atmósfera y el contraste de la portada. */
+      --color-petroleo: #0D252C;
+      /* Cobre cálido para pequeños acentos visuales. */
+      --color-cobre: #C68863;
+      /* Marrón oscuro para detalles que equilibran los tonos fríos. */
+      --color-marron: #5E3A28;
+      --ancho-contenido: 1100px;
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      margin: 0;
+      color: var(--color-carbon);
+      background: var(--color-blanco);
+      font-family: Arial, Helvetica, sans-serif;
+      line-height: 1.65;
+    }
+
+    a {
+      color: inherit;
+    }
+
+    .encabezado {
+      min-height: 68px;
+      padding: 14px clamp(20px, 5vw, 72px);
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 24px;
+      background: var(--color-cielo);
+    }
+
+    .marca {
+      color: var(--color-carbon);
+      font-family: Georgia, "Times New Roman", serif;
+      font-size: clamp(1.05rem, 2vw, 1.35rem);
+      text-decoration: none;
+      white-space: nowrap;
+    }
+
+    .navegacion {
+      display: flex;
+      align-items: center;
+      gap: clamp(20px, 4vw, 48px);
+      font-size: 0.9rem;
+    }
+
+    .navegacion a {
+      text-decoration: none;
+    }
+
+    .navegacion a:hover,
+    .navegacion a:focus-visible {
+      text-decoration: underline;
+      text-underline-offset: 5px;
+    }
+
+    .portada {
+      position: relative;
+      min-height: max(540px, calc(100svh - 68px));
+      display: flex;
+      align-items: center;
+      justify-content: flex-end;
+      overflow: hidden;
+      padding: clamp(28px, 7vw, 100px);
+      color: var(--color-blanco);
+      background-color: var(--color-petroleo);
+      background-image:
+        linear-gradient(90deg, rgb(13 37 44 / 13%) 15%, rgb(13 37 44 / 55%) 60%, rgb(13 37 44 / 82%) 100%),
+        url("imagenes/foto.jpg");
+      background-size: cover;
+      background-position: center 42%;
+    }
+
+    .portada-contenido {
+      position: relative;
+      z-index: 1;
+      width: min(48%, 560px);
+      margin: 0 2vw 24px 0;
+    }
+
+    .portada h1 {
+      margin: 0;
+      font-family: Georgia, "Times New Roman", serif;
+      font-size: clamp(3rem, 7vw, 6.75rem);
+      font-weight: 400;
+      letter-spacing: -0.055em;
+      line-height: 0.98;
+      text-wrap: balance;
+    }
+
+    .portada-subtitulo {
+      margin: 24px 0 0;
+      color: var(--color-blanco);
+      font-size: 0.95rem;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+    }
+
+    .portada-pie {
+      position: absolute;
+      z-index: 1;
+      right: clamp(20px, 5vw, 72px);
+      bottom: 28px;
+      left: clamp(20px, 5vw, 72px);
+      display: flex;
+      align-items: flex-end;
+      justify-content: space-between;
+      gap: 20px;
+    }
+
+    .portada-pie p {
+      margin: 0;
+      font-family: Georgia, "Times New Roman", serif;
+      font-size: clamp(1.15rem, 2.2vw, 1.7rem);
+    }
+
+    .boton {
+      display: inline-flex;
+      min-height: 48px;
+      align-items: center;
+      justify-content: center;
+      padding: 10px 24px;
+      border-radius: 999px;
+      color: var(--color-carbon);
+      background: var(--color-blanco);
+      font-size: 0.9rem;
+      text-decoration: none;
+      transition: transform 160ms ease;
+    }
+
+    .boton:hover {
+      transform: translateY(-2px);
+    }
+
+    .boton:focus-visible,
+    a:focus-visible {
+      outline: 3px solid var(--color-cobre);
+      outline-offset: 4px;
+    }
+
+    main {
+      padding: 0 clamp(20px, 6vw, 88px);
+    }
+
+    .seccion {
+      width: min(100%, var(--ancho-contenido));
+      margin: 0 auto;
+      padding: clamp(48px, 8vw, 88px) 0;
+      border-bottom: 1px solid rgb(13 37 44 / 14%);
+      scroll-margin-top: 24px;
+    }
+
+    .seccion h2 {
+      margin: 0 0 24px;
+      color: var(--color-petroleo);
+      font-family: Georgia, "Times New Roman", serif;
+      font-size: clamp(2rem, 4vw, 3rem);
+      font-weight: 400;
+      letter-spacing: -0.035em;
+      line-height: 1.15;
+    }
+
+    .sobre-mi {
+      max-width: 760px;
+      font-size: clamp(1.05rem, 2vw, 1.2rem);
+    }
+
+    .formacion-lista {
+      display: grid;
+      gap: 0;
+    }
+
+    .formacion-item {
+      display: grid;
+      grid-template-columns: minmax(120px, 190px) 1fr;
+      gap: 22px;
+      padding: 22px 0;
+      border-top: 1px solid rgb(13 37 44 / 14%);
+    }
+
+    .formacion-item:first-child {
+      border-top: 0;
+    }
+
+    .formacion-fecha {
+      color: var(--color-marron);
+      font-weight: 700;
+    }
+
+    .formacion-item p {
+      margin: 0;
+    }
+
+    .formacion-item strong {
+      display: block;
+      color: var(--color-petroleo);
+      font-size: 1.08rem;
+    }
+
+    .experiencia-nota {
+      max-width: 760px;
+    }
+
+    .experiencia-nota p {
+      margin: 0 0 12px;
+    }
+
+    .habilidades-lista {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+      margin: 0;
+      padding: 0;
+      list-style: none;
+    }
+
+    .habilidades-lista li {
+      padding: 8px 14px;
+      border: 1px solid rgb(13 37 44 / 20%);
+      border-radius: 999px;
+      background: rgb(181 209 232 / 25%);
+    }
+
+    .idiomas-lista {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 18px;
+      max-width: 620px;
+    }
+
+    .idioma {
+      padding: 20px;
+      background: rgb(181 209 232 / 25%);
+    }
+
+    .idioma strong {
+      display: block;
+      color: var(--color-petroleo);
+      font-size: 1.1rem;
+    }
+
+    .idioma span {
+      color: var(--color-marron);
+    }
+
+    .contacto-lista {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 18px 36px;
+      max-width: 760px;
+      margin: 0;
+    }
+
+    .contacto-lista div {
+      min-width: 0;
+    }
+
+    .contacto-lista dt {
+      color: var(--color-marron);
+      font-size: 0.85rem;
+      font-weight: 700;
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+    }
+
+    .contacto-lista dd {
+      margin: 4px 0 0;
+      overflow-wrap: anywhere;
+    }
+
+    .contacto-lista a {
+      text-decoration-thickness: 1px;
+      text-underline-offset: 3px;
+    }
+
+    .pie-pagina {
+      padding: 24px;
+      color: var(--color-petroleo);
+      background: var(--color-cielo);
+      text-align: center;
+      font-size: 0.85rem;
+    }
+
+    .pie-pagina p {
+      margin: 0;
+    }
+
+    @media (max-width: 700px) {
+      .encabezado {
+        min-height: 62px;
+        gap: 12px;
+        padding-inline: 18px;
+      }
+
+      .marca {
+        max-width: 58%;
+        overflow: hidden;
+        text-overflow: ellipsis;
+      }
+
+      .navegacion {
+        gap: 16px;
+        font-size: 0.85rem;
+      }
+
+      .portada {
+        min-height: max(590px, calc(100svh - 62px));
+        align-items: flex-end;
+        justify-content: flex-start;
+        padding: 32px 22px 112px;
+        background-image:
+          linear-gradient(0deg, rgb(13 37 44 / 88%) 0%, rgb(13 37 44 / 45%) 55%, rgb(13 37 44 / 12%) 100%),
+          url("imagenes/foto.jpg");
+        background-position: center 35%;
+      }
+
+      .portada-contenido {
+        width: min(100%, 520px);
+        margin: 0;
+      }
+
+      .portada h1 {
+        font-size: clamp(3.2rem, 13vw, 5.2rem);
+      }
+
+      .portada-subtitulo {
+        margin-top: 16px;
+      }
+
+      .portada-pie {
+        right: 22px;
+        bottom: 22px;
+        left: 22px;
+      }
+
+      main {
+        padding-inline: 22px;
+      }
+
+      .formacion-item {
+        grid-template-columns: 1fr;
+        gap: 4px;
+      }
+    }
+
+    @media (max-width: 420px) {
+      .marca {
+        font-size: 1rem;
+      }
+
+      .navegacion {
+        gap: 12px;
+        font-size: 0.8rem;
+      }
+
+      .contacto-lista,
+      .idiomas-lista {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      html {
+        scroll-behavior: auto;
+      }
+
+      .boton {
+        transition: none;
+      }
+    }
+  </style>
+</head>
+<body>
+  <header class="encabezado">
+    <a class="marca" href="#inicio">María Álvarez Martínez</a>
+    <nav class="navegacion" aria-label="Navegación principal">
+      <a href="#formacion">CV</a>
+      <a href="#contacto">Contacto</a>
+    </nav>
+  </header>
+
+  <!-- ===== SECCIÓN: PORTADA ===== -->
+  <section class="portada" id="inicio" aria-labelledby="nombre">
+    <div class="portada-contenido">
+      <h1 id="nombre">María Álvarez<br>Martínez</h1>
+      <p class="portada-subtitulo">Estudiante de Trabajo Social</p>
+    </div>
+    <div class="portada-pie">
+      <p>Trabajo Social</p>
+      <a class="boton" href="#formacion">Ver currículum</a>
+    </div>
+  </section>
+  <!-- ===== FIN: PORTADA ===== -->
+
+  <main>
+    <!-- ===== SECCIÓN: SOBRE MÍ ===== -->
+    <section class="seccion" id="sobre-mi" aria-labelledby="titulo-sobre-mi">
+      <h2 id="titulo-sobre-mi">Sobre mí</h2>
+      <div class="sobre-mi">
+        <p>Soy una persona empática y cercana, con motivación por ayudar a los demás y acompañarles. Busco hacer sentir a las personas que no están solas y que pueden contar conmigo. Tengo ganas de aprender y de seguir mejorando en cualquier ámbito.</p>
+      </div>
+    </section>
+    <!-- ===== FIN: SOBRE MÍ ===== -->
+
+    <!-- ===== SECCIÓN: FORMACIÓN ===== -->
+    <section class="seccion" id="formacion" aria-labelledby="titulo-formacion">
+      <h2 id="titulo-formacion">Formación</h2>
+      <div class="formacion-lista">
+        <article class="formacion-item">
+          <div class="formacion-fecha">2008–2017</div>
+          <p><strong>Educación Primaria</strong>CEIP Eduardo Lobillo, Rota</p>
+        </article>
+        <article class="formacion-item">
+          <div class="formacion-fecha">2017–2023</div>
+          <p><strong>ESO y Bachillerato de Humanidades</strong>IES Castillo de Luna, Rota</p>
+        </article>
+        <article class="formacion-item">
+          <div class="formacion-fecha">Actualidad</div>
+          <p><strong>Grado en Trabajo Social (4.º curso)</strong>Campus Universitario de Jerez</p>
+        </article>
+      </div>
+    </section>
+    <!-- ===== FIN: FORMACIÓN ===== -->
+
+    <!-- ===== SECCIÓN: EXPERIENCIA ===== -->
+    <section class="seccion" id="experiencia" aria-labelledby="titulo-experiencia">
+      <h2 id="titulo-experiencia">Experiencia</h2>
+      <div class="experiencia-nota">
+        <p>Sin experiencia laboral.</p>
+        <p>Actitud proactiva y motivada por aprender, adquirir experiencia y mejorar en cualquier puesto o entorno de trabajo.</p>
+      </div>
+    </section>
+    <!-- ===== FIN: EXPERIENCIA ===== -->
+
+    <!-- ===== SECCIÓN: HABILIDADES ===== -->
+    <section class="seccion" id="habilidades" aria-labelledby="titulo-habilidades">
+      <h2 id="titulo-habilidades">Habilidades</h2>
+      <ul class="habilidades-lista">
+        <li>Escucha activa</li>
+        <li>Comunicación efectiva</li>
+        <li>Elaboración de informes sociales</li>
+        <li>Trabajo en equipo</li>
+        <li>Mediación</li>
+        <li>Empatía</li>
+        <li>Responsabilidad</li>
+        <li>Discreción y confidencialidad</li>
+        <li>Compromiso</li>
+        <li>Respeto</li>
+        <li>Capacidad de escucha</li>
+      </ul>
+    </section>
+    <!-- ===== FIN: HABILIDADES ===== -->
+
+    <!-- ===== SECCIÓN: IDIOMAS ===== -->
+    <section class="seccion" id="idiomas" aria-labelledby="titulo-idiomas">
+      <h2 id="titulo-idiomas">Idiomas</h2>
+      <div class="idiomas-lista">
+        <div class="idioma"><strong>Español</strong><span>Nativo</span></div>
+        <div class="idioma"><strong>Inglés</strong><span>Nivel B1</span></div>
+      </div>
+    </section>
+    <!-- ===== FIN: IDIOMAS ===== -->
+
+    <!-- ===== SECCIÓN: CONTACTO ===== -->
+    <section class="seccion" id="contacto" aria-labelledby="titulo-contacto">
+      <h2 id="titulo-contacto">Contacto</h2>
+      <dl class="contacto-lista">
+        <div>
+          <dt>Teléfono</dt>
+          <dd><a href="tel:601424838">601 42 48 38</a></dd>
+        </div>
+        <div>
+          <dt>Correo electrónico</dt>
+          <dd><a href="mailto:mariaalvarezm111@gmail.com">mariaalvarezm111@gmail.com</a></dd>
+        </div>
+        <div>
+          <dt>Ubicación</dt>
+          <dd>Rota, Cádiz</dd>
+        </div>
+      </dl>
+    </section>
+    <!-- ===== FIN: CONTACTO ===== -->
+  </main>
+
+  <footer class="pie-pagina">
+    <p>María Álvarez Martínez</p>
+  </footer>
+</body>
+</html>
